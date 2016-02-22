@@ -1,0 +1,19 @@
+# -*- python -*-
+from glob import glob
+from os.path import join as pathjoin
+Import('env')
+
+cmdfile = env.File('maketab.py')
+for stem in ('signature', 'delta'):
+    for suffix in ('hpp', 'cpp'):
+        env.Command('%s.tab.%s' % (stem, suffix),
+                    ['cmdtab.jj%s' % suffix, '%s.json' % stem],
+                    '%s $TARGET $SOURCES' % cmdfile.path)
+        env.Depends('%s.tab.%s' % (stem, suffix), cmdfile)
+
+srcs = glob('*.cpp') + glob('*.c')
+if 'signature.tab.cpp' not in srcs: srcs.append('signature.tab.cpp')
+if 'delta.tab.cpp' not in srcs: srcs.append('delta.tab.cpp')
+#if 'archive.tab.cpp' not in srcs: srcs.append('archive.tab.cpp')
+env.Library('rsyncxx', srcs)
+env.SharedLibrary('rsyncxx', srcs)

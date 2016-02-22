@@ -1,0 +1,14 @@
+{
+    "prefix": "signature",
+    "entrance": "pack_signature",
+    "graph": {
+        "pack_signature": ["block_len"],
+        "block_len": ["file_path", "pack_end"],
+        "file_path": ["signature"],
+        "signature": ["file_path", "signature", "pack_end"],
+        "pack_end": [] },
+    "params": {
+        "block_len": [0],
+        "signature": [0],
+        "file_path": [240] }
+}

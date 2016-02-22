@@ -1,0 +1,15 @@
+{
+    "prefix": "delta",
+    "entrance": "pack_delta",
+    "graph": {
+        "pack_delta": ["file_path", "pack_end"],
+        "file_path": ["literal", "copy", "file_unchanged_end"],
+        "literal": ["copy", "file_path", "pack_end"],
+        "copy": ["literal", "file_path", "pack_end"],
+        "file_unchanged_end": ["file_path", "pack_end"],
+        "pack_end": [] },
+    "params": {
+        "file_path": [128],
+        "literal": [96],
+        "copy": [0, 0] }
+}
