@@ -12,3 +12,4 @@ env = Environment(CCFLAGS = ccflags,
                   PROGSUFFIX = '.exe')
 Export('env')
 SConscript(pathjoin('rsyncxx', 'SConscript'))
+SConscript(pathjoin('pyrsync', 'SConscript'))

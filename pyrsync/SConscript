@@ -1,0 +1,7 @@
+# -*- python -*-
+from glob import glob
+from os.path import join as pathjoin
+Import('env')
+
+env.SharedLibrary('_rsync', [pathjoin('srcs', 'rsyncmod.cpp')] +
+                  glob(pathjoin('srcs', '_*.cpp')))
